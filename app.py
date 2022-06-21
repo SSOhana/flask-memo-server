@@ -23,9 +23,9 @@ api = Api(app)
 
 
 # 경로와 리소스를 연결한다.
-api.add_resource(UserRegisterResource, '/users/register')
-api.add_resource(UserLoginResource, '/users/login')
-api.add_resource(UserLogoutResource, '/users/logout')
+api.add_resource(UserRegisterResource, '/users/register')       # 회원가입 API
+api.add_resource(UserLoginResource, '/users/login')             # 로그인 API
+api.add_resource(UserLogoutResource, '/users/logout')           # 로그아웃 API
 
 
 if __name__ == '__main__' :

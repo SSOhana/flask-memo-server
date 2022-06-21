@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from os import access
+
 from flask import request
 from flask_jwt_extended import create_access_token, get_jwt, jwt_required
 from flask_restful import Resource
@@ -12,7 +12,7 @@ from email_validator import validate_email, EmailNotValidError
 
 from utils import check_password, hash_password
 
-# 회원가입 클래스
+# 클래스 만들기 (회원가입)
 class UserRegisterResource(Resource) :
 
     def post(self) :
@@ -89,7 +89,7 @@ class UserRegisterResource(Resource) :
                  "access_token" : access_token }, 200
 
 
-# 클래스 만들기
+# 클래스 만들기 (로그인)
 class UserLoginResource(Resource) :
     def post(self) :
         # 1. 클라이언트로부터 데이터 받아온다.
@@ -167,6 +167,7 @@ class UserLoginResource(Resource) :
                 
 jwt_blacklist = set()
 
+# 클래스 만들기 (로그아웃)
 class UserLogoutResource(Resource) :
 
     @jwt_required()
@@ -180,3 +181,14 @@ class UserLogoutResource(Resource) :
                
         
         return {"result" : "success"}, 200
+
+
+# 클래스 만들기 (메모 조회)
+class MemoResource(Resource):
+    
+    return
+
+# 클래스 만들기 (메모 생성)
+
+
+# 클래스 만들기 (메모 삭제)
