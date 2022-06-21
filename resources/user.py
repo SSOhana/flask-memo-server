@@ -108,7 +108,7 @@ class UserLoginResource(Resource) :
             query = '''select *
                     from user
                     where email = %s ;'''
-            record = (data['email'])
+            record = (data['email'],)
             
             # select 문은, dictionary = True 를 해준다.
             cursor = connection.cursor(dictionary = True)
@@ -160,12 +160,11 @@ class UserLoginResource(Resource) :
 
         
         # 5. JWT 억세스 토큰 생성해서 리턴해준다.
-        create_access_token( user_info['id'] )
+        access_token = create_access_token( user_info['id'] )
 
-        return {"result":"success",
-                "access_token" : access_token }, 200
-
-
+        return {"result" : "success",
+                "access_token" : access_token}, 200
+                
 jwt_blacklist = set()
 
 class UserLogoutResource(Resource) :
