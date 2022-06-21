@@ -1,5 +1,6 @@
 import datetime
 from http import HTTPStatus
+from os import access
 from flask import request
 from flask_jwt_extended import create_access_token, get_jwt, jwt_required
 from flask_restful import Resource
@@ -105,9 +106,9 @@ class UserLoginResource(Resource) :
             connection = get_connection()
 
             query = '''select *
-                    from memo
-                    where id = %s ;'''
-            record = (user_id, )
+                    from user
+                    where email = %s ;'''
+            record = (data['email'])
             
             # select 문은, dictionary = True 를 해준다.
             cursor = connection.cursor(dictionary = True)
@@ -126,7 +127,6 @@ class UserLoginResource(Resource) :
             i = 0
             for record in result_list :
                 result_list[i]['created_at'] = record['created_at'].isoformat()
-                result_list[i]['updated_at'] = record['updated_at'].isoformat()
                 i = i + 1                
 
             cursor.close()
