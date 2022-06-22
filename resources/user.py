@@ -181,14 +181,3 @@ class UserLogoutResource(Resource) :
                
         
         return {"result" : "success"}, 200
-
-
-# 클래스 만들기 (메모 조회)
-class MemoResource(Resource):
-    
-    return
-
-# 클래스 만들기 (메모 생성)
-
-
-# 클래스 만들기 (메모 삭제)

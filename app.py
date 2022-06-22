@@ -1,8 +1,9 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager, jwt_manager
 from flask_restful import Api
-
 from config import Config
+from resources.follow import FollowListResource, FollowResource
+from resources.memo import MemoInfoResource, MemoInfooResource, MemoListResource
 from resources.user import UserLoginResource, UserLogoutResource, UserRegisterResource, jwt_blacklist
 
 app = Flask(__name__)
@@ -26,7 +27,10 @@ api = Api(app)
 api.add_resource(UserRegisterResource, '/users/register')       # 회원가입 API
 api.add_resource(UserLoginResource, '/users/login')             # 로그인 API
 api.add_resource(UserLogoutResource, '/users/logout')           # 로그아웃 API
-
+api.add_resource(MemoListResource, '/memo')                     # 메모 생성, 조회 API
+api.add_resource(MemoInfoResource, '/memo/<int:memo_Id>')       # 메모
+api.add_resource(FollowResource, '/follow/<int:follow_id>')
+api.add_resource(FollowListResource, '/follow')
 
 if __name__ == '__main__' :
     app.run()
