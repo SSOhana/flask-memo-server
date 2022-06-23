@@ -1,8 +1,6 @@
 import datetime
 from distutils.command.sdist import sdist
 from http import HTTPStatus
-from re import L, S
-
 from flask import request
 from flask_jwt_extended import create_access_token, get_jwt, get_jwt_identity, jwt_required
 from flask_restful import Resource
