@@ -29,8 +29,8 @@ api.add_resource(UserLoginResource, '/users/login')             # 로그인 API
 api.add_resource(UserLogoutResource, '/users/logout')           # 로그아웃 API
 api.add_resource(MemoListResource, '/memo')                     # 메모 생성, 조회 API
 api.add_resource(MemoInfoResource, '/memo/<int:memo_Id>')       # 메모
-api.add_resource(FollowResource, '/follow/<int:follow_id>')
-api.add_resource(FollowListResource, '/follow')
+api.add_resource(FollowResource, '/follow/<int:follow_id>')     # 친구 맺기 API
+api.add_resource(FollowListResource, '/follow')                 # 친구 게시글 API
 
 if __name__ == '__main__' :
     app.run()
